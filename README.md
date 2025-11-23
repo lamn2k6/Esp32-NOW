@@ -5,7 +5,7 @@ Mô tả hoạt động:
 3. Khởi tạo ESP-NOW bằng `esp_now_init()`
 4. Thêm thiết bị nhận (peer) bằng địa chỉ MAC khai báo trong code
 5. Gửi tin nhắn "HELLO" đến peer
-# code đầy đủ
+# Code đầy đủ
 ```cpp
 #include <WiFi.h>
 #include <esp_now.h>
