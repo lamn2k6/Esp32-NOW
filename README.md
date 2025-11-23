@@ -83,13 +83,13 @@ esp_now_peer_info_t x={};
   esp_now_send(mac, (uint8_t*)n, sizeof(n));
 ```
 `esp_now_peer_info_t x={}` 
-&emsp;Khai báo một cấu trúc dữ liệu để lưu thông tin của peer
+&emsp;Khai báo một cấu trúc dữ liệu để lưu thông tin của peer  
 `memcpy(x.peer_addr, mac, 6)`
-&emsp;Sao chép 6 byte địa chỉ mac của peer vào trường địa chỉ của cấu trúc x
+&emsp;Sao chép 6 byte địa chỉ mac của peer vào trường địa chỉ của cấu trúc x  
 `esp_now_add_peer(&x)`
-&emsp;Thêm thiết bị nhận vào danh sách mà ESP32 có thể gửi dữ liệu
+&emsp;Thêm thiết bị nhận vào danh sách mà ESP32 có thể gửi dữ liệu  
 `esp_now_send(mac, (uint8_t*)n, sizeof(n));`
-&emsp;Thực hiện gửi dữ liệu "HELLO" tới địa chỉ mac
+&emsp;Thực hiện gửi dữ liệu "HELLO" tới địa chỉ mac  
 
 ```python
 void loop() {
