@@ -6,6 +6,7 @@ Mô tả hoạt động:
 4. Thêm thiết bị nhận (peer) bằng địa chỉ MAC khai báo trong code
 5. Gửi tin nhắn "HELLO" đến peer
 # code đầy đủ
+# Code đầy đủ
 ```cpp
 #include <WiFi.h>
 #include <esp_now.h>
@@ -28,6 +29,11 @@ void setup() {
 
 void loop() {
 
+  
+}
+
+void loop() {
+  
 
 }
 ```
@@ -47,6 +53,7 @@ Thư viện hỗ trợ giao tiếp không  của ESP32:
 `esp_now_init()`: khởi tạo giao thức ESP-NOW
 `esp_now_add_peer(&x)`: thêm thiết bị nhận vào danh sách
 `esp_now_send(mac, (uint8_t*)n, sizeof(n))`: cấu trúc thông tin của thiết bị nhận: địa chỉ mac thiết bị nhận, con trỏ đến dữ liệu cần, kích thước gói dữ liệu
+`esp_now_send(mac, (uint8_t*)n, sizeof(n))`: cấu trúc thông tin của thiết bị: địa chỉ mac thiết bị nhận, con trỏ đến dữ liệu cần, kích thước gói dữ liệu
 
 2. Các biến toàn cục
 ```cpp
@@ -181,6 +188,13 @@ esp_now_register_recv_cb([](
 `for(int i=0; i<len; i++) Serial.print((char)incoming[i]);`
 &emsp;`for(int i=0; i<len; i++)` vòng lặp chạy từ đầu mảng dữ liệu (i=0) cho đến hết chiều dài của dữ liệu (len).
 &emsp;`Serial.print((char)incoming[i])` lấy từng byte (incoming[i]) từ dữ liệu nhận được và thực hiện ép kiểu ((char)) để chuyển đổi giá trị byte đó thành ký tự chữ/số tương ứng
+&emsp;Khai báo một cấu trúc dữ liệu để lưu thông tin của peer  
+`memcpy(x.peer_addr, mac, 6)`
+&emsp;Sao chép 6 byte địa chỉ mac của peer vào trường địa chỉ của cấu trúc x  
+`esp_now_add_peer(&x)`
+&emsp;Thêm thiết bị nhận vào danh sách mà ESP32 có thể gửi dữ liệu  
+`esp_now_send(mac, (uint8_t*)n, sizeof(n));`
+&emsp;Thực hiện gửi dữ liệu "HELLO" tới địa chỉ mac  
 
 ```python
 void loop() {
@@ -191,3 +205,4 @@ Kết quả thực thi
 Sau khi nạp code, Serial Monitor sẽ hiển thị:
 1. Hiển thị thông báo `ESP32 Receiver đã sẵn sàng nhận dữ liệu... `
 2. Sau khi nhận được dữ liệu từ thiết bị gửi, in ra `HELLO`
+Sau khi nạp code, ESP32 sẽ gửi đi dữ liệu "HELLO" tới thiết bị nhận(peer)
