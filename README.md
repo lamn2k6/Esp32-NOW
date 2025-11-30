@@ -28,12 +28,6 @@ void setup() {
 
 void loop() {
 
-  
-}
-
-void loop() {
-  
-
 }
 ```
 # Giải thích chi tiết từng phần  
