@@ -115,6 +115,8 @@ void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
 
+  Serial.println(WiFi.macAddress());
+
   esp_now_init();
   esp_now_register_recv_cb([](
     const esp_now_recv_info_t *info, const uint8_t *incoming, int len) {
@@ -157,6 +159,11 @@ void setup() {
 `WiFi.mode(WIFI_STA)`   
 &emsp;Đặt ESP32 ở chế độ trạm (Station mode).  
 &emsp;Ở chế độ này, ESP32 hoạt động như một thiết bị WiFi thông thường, kết nối vào router thay vì phát WiFi.  
+
+```python
+Serial.println(WiFi.macAddress());
+```
+&emsp;Hàm thực hiện việc in ra MAC address của ESP32 trong Serial Monitor để ghi vào thiết bị gửi.  
 
 ```python  
 esp_now_init();
