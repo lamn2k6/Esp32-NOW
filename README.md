@@ -1,3 +1,19 @@
+# In ra MAC 
+Trước khi nạp code thì phải chạy đoạn code duới đây để in ra mac  
+```cpp
+#include <WiFi.h>
+
+void setup() {
+  Serial.begin(115200);
+  Serial.print("STA MAC: ");
+  Serial.println(WiFi.macAddress()); 
+}
+
+void loop() {
+  // không cần làm gì thêm
+}
+
+```
 # Part 1A: Esp32-NOW TRANSMITTER  
 Mô tả hoạt động:  
 1. ESP32 khởi động và thiết lập giao tiếp Serial Monitor.  
