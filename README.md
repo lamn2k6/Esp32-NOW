@@ -5,12 +5,14 @@ Trước khi nạp code thì phải chạy đoạn code duới đây để in ra
 
 void setup() {
   Serial.begin(115200);
+
+  WiFi.mode(WIFI_STA);   // BẮT BUỘC
   Serial.print("STA MAC: ");
-  Serial.println(WiFi.macAddress()); 
+  delay(3000);
+  Serial.println(WiFi.macAddress());
 }
 
 void loop() {
-  // không cần làm gì thêm
 }
 
 ```
